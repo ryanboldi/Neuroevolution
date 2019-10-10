@@ -4,10 +4,10 @@ var HEIGHT = 400;
 
 var WARMUP = 60; //frames before spawning anything
 
-var HEDGE_WIDTH = 40;
-var HEDGE_HEIGHT_MIN = 70;
-var HEDGE_HEIGHT_MAX = 150;
-var HEDGE_SPEED = 6.5;
+var HEDGE_WIDTH = 30;
+var HEDGE_HEIGHT_MIN = 40;
+var HEDGE_HEIGHT_MAX = 120;
+var HEDGE_SPEED = 7;
 
 var PLAYER_WIDTH = 30;
 var PLAYER_HEIGHT = 70;
@@ -18,8 +18,8 @@ var HEDGE_INTERVAL = START_HEDGE_INTERVAL; //frames between spawns
 var MIN_HEDGE_INTERVAL = 50;
 var HEDGE_INTERVAL_DECREASE = 5; //decrease in interval every spawn
 
-var JUMP_PENALTY = 0.5; //try to keep jump penalty less than hedge score as then genomes just kill themselves
-var SCORE_PER_HEDGE = 1;
+var JUMP_PENALTY = 0.1; //try to keep jump penalty less than hedge score as then genomes just kill themselves
+var SCORE_PER_HEDGE = 10;
 
 var spawnCounter = 0;
 var spawning = false;
@@ -47,6 +47,7 @@ function setup() {
     initNeat();
     startEvaluation();
 }
+
 function draw() {
     background(BGCOLOR);
 

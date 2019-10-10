@@ -67,11 +67,7 @@ class Player {
                     }
                 }
             }
-
-
-
         }
-
     }
 
     die() {

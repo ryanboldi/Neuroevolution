@@ -3,7 +3,7 @@ class Ant {
         if (brain instanceof NeuralNetwork) {
             this.brain = brain;
         }
-        else this.brain = new NeuralNetwork(9, 30, 4);
+        else this.brain = new NeuralNetwork(6, 30, 4);
         //how fast the ant can accelerate in one time step
         this.accel = 1;
         //how fast (angle) the ant can rotate in one time step
@@ -26,6 +26,8 @@ class Ant {
     }
 
     Update() {
+        let MouseX = mouseX
+        let MouseY = mouseY
 
         //moves the ant based on its velocity each time step
         let inputs = [];
@@ -37,11 +39,11 @@ class Ant {
         inputs[3] = map(height - this.pos.y, 0, height, -1, 1);
         inputs[4] = map(MouseX - this.pos.x, 0, width, -1, 1);
         inputs[5] = map(MouseY - this.pos.y, 0, height, -1, 1);
-        inputs[6] = map(MouseDir.y, -mouseSpeed, mouseSpeed, -1, 1);
-        inputs[7] = map(MouseDir.x, -mouseSpeed, mouseSpeed, -1, 1);
-        inputs[8] = map(mouseSize, 0, 300, -1, 1);
+        //inputs[6] = map(MouseDir.y, -mouseSpeed, mouseSpeed, -1, 1);
+        //inputs[7] = map(MouseDir.x, -mouseSpeed, mouseSpeed, -1, 1);
+        //inputs[8] = map(mouseSize, 0, 300, -1, 1);
 
-        outputs = this.brain.feedforward(inputs);
+        outputs = this.brain.predict(inputs);
 
         if (outputs[0] > 0.5) this.Turn(1, 0, 0, 0);
         if (outputs[1] > 0.5) this.Turn(0, 1, 0, 0);
@@ -89,6 +91,9 @@ class Ant {
     CheckCollision() {
         let x = this.pos.x;
         let y = this.pos.y;
+
+        MouseX = mouseX;
+        MouseY = mouseY;
 
         //if its out of bounds on the x or y
         if (x > width || x < 0) this.alive = false;

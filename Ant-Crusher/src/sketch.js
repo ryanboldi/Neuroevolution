@@ -1,7 +1,7 @@
 const MaxSpeed = 5;
 const mouseSpeed = 10;
 
-var mouseSize = 30;
+var mouseSize = 50;
 const MaxMouseSize = 10;
 var change;
 
@@ -98,7 +98,7 @@ function draw() {
 
 //takes last generation and their fitnesses and makes a new generation
 function makeNewPop(oldAnts) {
-    mouseSize = 0;
+    //mouseSize = 0;
     generation++;
     matingPool = [];
     newGen = [];
